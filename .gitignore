@@ -1,3 +1,11 @@
+tst/*
+tst.go
+tst.c
+hello
+tst
+main
+
+
 #### go ####
 # If you prefer the allow list template instead of the deny list, see community template:
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
@@ -60,20 +68,12 @@ go.work
 *.i*86
 *.x86_64
 *.hex
+*.pdf
 
 # Debug files
 *.dSYM/
 *.su
 *.idb
 *.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
 
 
