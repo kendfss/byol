@@ -1,9 +1,12 @@
 tst/*
-tst.go
-tst.c
+tst*.go
+tst*.c
 hello
 tst
 main
+*.tmp
+# debugging
+*dbv
 
 
 #### go ####

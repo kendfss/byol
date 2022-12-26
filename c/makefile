@@ -10,7 +10,12 @@ ifeq ($(oname),byol)
 endif
 
 build:
-	@clang -std=c99 -Wall $(iname) -o $(oname) $(linkArgs) 
+	@clang -s -std=c99 -Wall $(iname) -o $(oname) $(linkArgs) 
+
+debug:
+	oname=$(oname)dbv
+	@clang -ggdb3 -std=c99 -Wall $(iname) -o $(oname) $(linkArgs) 
+	@gdb $(oname)
 
 run: build
 	@./$(oname) $(args)
