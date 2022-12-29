@@ -4,25 +4,22 @@
 
 #include "lexing.c"
 #include "oprs.c"
+#include "values.c"
 
-long eval(mpc_ast_t* t) {
+bval eval(mpc_ast_t* t) {
     if (strstr(t->tag, "number")) {
-        return atoi(t->contents);
+        errno  = 0;
+        long x = strtol(t->contents, NULL, 10);
+        return errno != ERANGE ? bval_num(x) : bval_err(ERR_BAD_NUM);
     }
 
     char* op = t->children[1]->contents;
-
-    long x = eval(t->children[2]);
+    bval  x  = eval(t->children[2]);
 
     int i = 3;
-
     while (strstr(t->children[i]->tag, "expr")) {
         x = eval_op(x, op, eval(t->children[i]));
         i++;
-    }
-
-    if (i == 3 && strcmp(op, "-") == 0) {
-        x = eval_op(x, op, 0);
     }
 
     return x;

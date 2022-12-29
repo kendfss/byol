@@ -15,6 +15,7 @@
 #include "errors.c"
 #include "eval.c"
 #include "utils.c"
+#include "values.c"
 
 int prompt(char* name, char* version) {
 
@@ -78,8 +79,8 @@ int prompt(char* name, char* version) {
                 break;
             }
 
-            long result = eval(ast);
-            printf("%li\n", result);
+            bval result = eval(ast);
+            bval_println(result);
             mpc_ast_delete(r.output);
         } else {
             mpc_err_print(r.error);
